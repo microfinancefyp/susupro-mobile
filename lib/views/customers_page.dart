@@ -26,6 +26,7 @@ class _CustomersPageState extends State<CustomersPage> {
     {'name': 'Michael Brown', 'location': 'Cape Coast', 'dailyRate': 'GHC 12'},
     {'name': 'Sarah Johnson', 'location': 'Accra', 'dailyRate': 'GHC 20'},
     {'name': 'Samuel Tetteh', 'location': 'Tema', 'dailyRate': 'GHC 18'},
+    {'name': 'Augustine Love', 'location': 'Agona', 'dailyRate': 'GHC 5'}
   ];
 
   final List<String> _locations = [
@@ -33,7 +34,8 @@ class _CustomersPageState extends State<CustomersPage> {
     'Accra',
     'Kumasi',
     'Cape Coast',
-    'Tema'
+    'Tema',
+    'Agona'
   ];
 
   String _selectedLocation = 'All';

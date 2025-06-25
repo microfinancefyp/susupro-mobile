@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:susu_micro/extensions/spacing.dart';
+import 'package:susu_micro/route_transitions/route_transition_fade.dart';
 import 'package:susu_micro/utils/appAssets.dart';
 import 'package:susu_micro/utils/colors.dart';
 import 'package:susu_micro/utils/text.dart';
+import 'package:susu_micro/views/customer_profile.dart';
 import 'package:susu_micro/widgets/transaction_widget.dart';
 
 class CustomerDetailsPage extends StatefulWidget {
@@ -31,6 +33,21 @@ class _CustomerDetailsPageState extends State<CustomerDetailsPage> {
       backgroundColor: AppColors().whiteColor,
       appBar: AppBar(
         backgroundColor: AppColors().whiteColor,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: InkWell(
+              onTap: () {
+                Navigator.of(context)
+                    .push(FadeRoute(page: const CustomerProfile()));
+              },
+              child: MyTexts().regularText(
+                "Info",
+                fontSize: 16,
+              ),
+            ),
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),

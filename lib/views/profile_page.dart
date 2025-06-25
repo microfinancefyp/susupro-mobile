@@ -1,9 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:susu_micro/extensions/spacing.dart';
 import 'package:susu_micro/utils/appAssets.dart';
 import 'package:susu_micro/utils/colors.dart';
 import 'package:susu_micro/utils/screen_measurement.dart';
 import 'package:susu_micro/utils/text.dart';
+import 'package:susu_micro/views/staking_page.dart';
 import 'package:susu_micro/widgets/settings_card.dart';
 
 class UserProfile extends StatefulWidget {
@@ -54,18 +56,20 @@ class _UserProfileState extends State<UserProfile> {
               ),
             ),
             90.0.vSpace,
-            InkWell(
-              onTap: () {},
-              child: const SettingsCard(
-                icon: Icons.person,
-                label: "Account info",
-              ),
+            SettingsCard(
+              icon: Icons.person,
+              label: "Account info",
+              function: () {
+                Navigator.of(context).push(CupertinoPageRoute(
+                    builder: (context) =>
+                        const StakingPage(customerName: 'customerName')));
+              },
             ),
-            const SettingsCard(
+            SettingsCard(
               icon: Icons.settings_outlined,
-              label: "Settings",
+              label: "Settings", 
             ),
-            const SettingsCard(
+            SettingsCard(
               icon: Icons.info_outline,
               label: "Account info",
             ),

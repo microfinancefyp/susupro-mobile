@@ -66,7 +66,10 @@ class _StakingPageState extends State<StakingPage> {
                 padding: const EdgeInsets.all(12.0),
                 child: TextFormField(
                   textAlign: TextAlign.center,
-                  decoration: InputDecoration(hintText: "GHS20.0"),
+                  decoration: const InputDecoration(
+                    hintText: "20",
+                    hintStyle: TextStyle(color: Colors.grey),
+                  ),
                 ),
               )
             ],
@@ -75,4 +78,5 @@ class _StakingPageState extends State<StakingPage> {
       ),
     );
   }
+   
 }
