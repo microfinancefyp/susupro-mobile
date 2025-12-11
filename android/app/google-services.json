@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "82489929158",
+    "project_id": "susu-pro-6f2a9",
+    "storage_bucket": "susu-pro-6f2a9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:82489929158:android:2ff782fe5bed13c60b16c7",
+        "android_client_info": {
+          "package_name": "com.susu_pro.susu_micro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsAVf7i9oQ0nXGBwBIB9bCtoxnEsZ_jkg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

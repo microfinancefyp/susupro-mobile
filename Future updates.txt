@@ -1,0 +1,1 @@
+A page and a function to upload all offline records, once there is internet connection

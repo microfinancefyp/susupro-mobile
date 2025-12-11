@@ -11,14 +11,19 @@ class MyTextFields {
     double? formWidth,
     IconData? icon,
     Color? textColor,
+    bool? obscureText,
+    TextInputType? inputType,
     String? Function(String?)? validator,
     void Function(String)? onChanged,
+    void Function()? obscureSwitch,
   }) {
     return SizedBox(
       width: formWidth ?? Screen.width(context) * 0.85,
       child: TextFormField(
+        keyboardType: inputType ?? null,
         validator: validator,
         onChanged: onChanged,
+        obscureText: obscureText ?? false,
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
@@ -44,9 +49,14 @@ class MyTextFields {
             ),
             borderRadius: BorderRadius.circular(10),
           ),
-          suffixIcon: Icon(
-            icon,
-            color: AppColors().lightGrey,
+          suffixIcon: InkWell(
+            onTap: () {
+              obscureSwitch;
+            },
+            child: Icon(
+              icon,
+              color: AppColors().lightGrey,
+            ),
           ),
         ),
         controller: controller,
