@@ -1,8 +1,73 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:provider/provider.dart';
+import 'package:susu_micro/providers/customer_provider.dart';
+import 'package:susu_micro/providers/next_account_number.dart';
+import 'package:susu_micro/providers/staff_provider.dart';
+import 'package:susu_micro/views/auth_gate.dart';
+import 'package:susu_micro/views/customers_page.dart';
+import 'package:susu_micro/views/signin_page.dart';
 import 'package:susu_micro/views/welcome_page.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  print("Handling background message: ${message.messageId}");
+  print("Data: ${message.data}");
+  print("Notification: ${message.notification?.title}");
+}
+
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  const AndroidNotificationChannel channel = AndroidNotificationChannel(
+    'default_channel',
+    'Default',
+    description: 'This channel is used for important notifications.',
+    importance: Importance.high,
+  );
+
+  await flutterLocalNotificationsPlugin
+      .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin>()
+      ?.createNotificationChannel(channel);
+
+  // Initialize local notifications
+  const AndroidInitializationSettings initializationSettingsAndroid =
+      AndroidInitializationSettings('app_icon');
+
+
+  const InitializationSettings initializationSettings =
+      InitializationSettings(android: initializationSettingsAndroid);
+
+  await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+
+  // Request permission for notifications
+  await FirebaseMessaging.instance.requestPermission();
+
+  // Handle background messages
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
+  runApp(
+    MultiProvider(providers: [
+      ChangeNotifierProvider(
+        create: (context) => StaffProvider(),
+      ),
+      ChangeNotifierProvider(
+        create: (context) => CustomerProvider(),
+      ),
+      ChangeNotifierProvider(
+        create: (context) => AccountNumberProvider(),
+      ),
+    ],
+    child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -33,7 +98,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const WelcomePage(),
+      home: const AuthGate(),
     );
   }
 }

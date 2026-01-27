@@ -11,11 +11,19 @@ class CustomerModel {
   String? role;
   String? address;
   String? city;
-  String? country;
+  String? gender;
   String? latitude;
   String? longitude;
   String? profileImageType;
   String? profileImageUrl;
+  String? dailyRate;
+  String? idCard;
+  String? dob;
+  String? email;
+  String? nextOfKin;
+  String? dateOfRegistration;
+  String? account_number;
+
 
   CustomerModel({
     this.fullName,
@@ -30,19 +38,34 @@ class CustomerModel {
     this.role,
     this.address,
     this.city,
-    this.country,
+    this.gender,
     this.latitude,
+    this.dailyRate,
+    this.idCard,
+    this.dob,
+    this.email,
+    this.nextOfKin,
+    this.dateOfRegistration,
+    this.account_number,
   });
 
   CustomerModel.fromJson(Map<String, dynamic> json) {
-    fullName = json['fullName'];
+    fullName = json['name'];
     location = json['location'];
-    phoneNumber = json['phoneNumber'];
+    phoneNumber = json['phone_number'];
     password = json['password'];
     profilePic = json['profilePic'];
-    uid = json['uid'];
+    uid = json['id'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
     status = json['status'];
+    dailyRate = json['daily_rate'];
+    idCard = json['id_card'];
+    dob = json['date_of_birth'];
+    email = json['email'];
+    gender = json['gender'];
+    nextOfKin = json['next_of_kin'];
+    dateOfRegistration = json['date_of_registration'];
+    account_number = json['account_number'];
   }
 }

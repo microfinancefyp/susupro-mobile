@@ -17,8 +17,8 @@ class _PageIndicatorState extends State<PageIndicator> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          width: (widget.selectedIndex == 1) ? 60 : 50,
-          height: (widget.selectedIndex == 1) ? 60 : 50,
+          width: (widget.selectedIndex == 1) ? 30 : 50,
+          height: (widget.selectedIndex == 1) ? 30 : 50,
           decoration: BoxDecoration(
             color: (widget.selectedIndex == 1) ? AppColors().yellowColor : null,
             borderRadius: BorderRadius.circular(100),
@@ -32,8 +32,8 @@ class _PageIndicatorState extends State<PageIndicator> {
         ),
         20.0.hSpace,
         Container(
-          width: (widget.selectedIndex == 2) ? 60 : 50,
-          height: (widget.selectedIndex == 2) ? 60 : 50,
+          width: (widget.selectedIndex == 2) ? 30 : 50,
+          height: (widget.selectedIndex == 2) ? 30 : 50,
           decoration: BoxDecoration(
             color: (widget.selectedIndex == 2) ? AppColors().yellowColor : null,
             borderRadius: BorderRadius.circular(100),
@@ -47,8 +47,8 @@ class _PageIndicatorState extends State<PageIndicator> {
         ),
         20.0.hSpace,
         Container(
-          width: (widget.selectedIndex == 3) ? 60 : 50,
-          height: (widget.selectedIndex == 3) ? 60 : 50,
+          width: (widget.selectedIndex == 3) ? 30 : 50,
+          height: (widget.selectedIndex == 3) ? 30 : 50,
           decoration: BoxDecoration(
             color: (widget.selectedIndex == 3) ? AppColors().yellowColor : null,
             borderRadius: BorderRadius.circular(100),
