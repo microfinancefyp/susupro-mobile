@@ -23,6 +23,7 @@ class CustomerModel {
   String? nextOfKin;
   String? dateOfRegistration;
   String? account_number;
+  String? momo_number;
 
 
   CustomerModel({
@@ -47,6 +48,7 @@ class CustomerModel {
     this.nextOfKin,
     this.dateOfRegistration,
     this.account_number,
+    this.momo_number,
   });
 
   CustomerModel.fromJson(Map<String, dynamic> json) {
@@ -67,5 +69,6 @@ class CustomerModel {
     nextOfKin = json['next_of_kin'];
     dateOfRegistration = json['date_of_registration'];
     account_number = json['account_number'];
+    momo_number= json['momo_number'];
   }
 }

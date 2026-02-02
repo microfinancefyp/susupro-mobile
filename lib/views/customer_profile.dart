@@ -39,6 +39,7 @@ class _CustomerProfileState extends State<CustomerProfile>
   // Controllers for editing
   late TextEditingController _nameController;
   late TextEditingController _phoneController;
+  late TextEditingController _momoController;
   late TextEditingController _nokController;
   late TextEditingController _dailyRateController;
   late TextEditingController _locationController;
@@ -76,6 +77,7 @@ class _CustomerProfileState extends State<CustomerProfile>
   void _initializeControllers() {
     _nameController = TextEditingController(text: _currentCustomer.fullName ?? '');
     _phoneController = TextEditingController(text: _currentCustomer.phoneNumber ?? '');
+    _momoController = TextEditingController(text: _currentCustomer.momo_number ?? '');
     _nokController = TextEditingController(text: _currentCustomer.nextOfKin ?? '');
     _dailyRateController = TextEditingController(text: _currentCustomer.dailyRate ?? '');
     _locationController = TextEditingController(text: _currentCustomer.location ?? '');
@@ -128,6 +130,8 @@ class _CustomerProfileState extends State<CustomerProfile>
       "location": _locationController.text.trim(),
       "gender": _selectedGender,
       "date_of_birth": _selectedDob,
+      "id_card": widget.customer?.idCard,
+      "momo_number": _momoController.text.trim(),
     };
     final response = await http.put(
       Uri.parse("https://susu-pro-backend.onrender.com/api/customers/update-mobile"),
@@ -446,6 +450,18 @@ class _CustomerProfileState extends State<CustomerProfile>
                       value?.isEmpty ?? true ? 'Phone number is required' : null,
                 )
               : _buildInfoRow('Phone', widget.customer?.phoneNumber ?? 'N/A', Icons.phone),
+          
+          16.0.vSpace,
+          _isEditing
+              ? _buildEditableField(
+                  'Momo Number',
+                  _momoController,
+                  Icons.credit_card,
+                  keyboardType: TextInputType.phone,
+                  validator: (value) =>
+                      value?.isEmpty ?? true ? 'Momo number is required' : null,
+                )
+              : _buildInfoRow('Momo', widget.customer?.momo_number ?? 'N/A', Icons.phone),
           
           16.0.vSpace,
           
