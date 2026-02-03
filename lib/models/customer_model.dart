@@ -24,6 +24,7 @@ class CustomerModel {
   String? dateOfRegistration;
   String? account_number;
   String? momo_number;
+  double? totalBalance;
 
 
   CustomerModel({
@@ -49,6 +50,7 @@ class CustomerModel {
     this.dateOfRegistration,
     this.account_number,
     this.momo_number,
+    this.totalBalance,
   });
 
   CustomerModel.fromJson(Map<String, dynamic> json) {
@@ -70,5 +72,51 @@ class CustomerModel {
     dateOfRegistration = json['date_of_registration'];
     account_number = json['account_number'];
     momo_number= json['momo_number'];
-  }
+    totalBalance = double.tryParse(json['totalBalance']?.toString() ?? '0') ?? 0.0;
+    }
+
+    CustomerModel copyWith({
+  String? fullName,
+  String? location,
+  String? phoneNumber,
+  String? password,
+  String? profilePic,
+  String? uid,
+  String? createdAt,
+  String? updatedAt,
+  String? status,
+  String? dailyRate,
+  String? idCard,
+  String? dob,
+  String? email,
+  String? gender,
+  String? nextOfKin,
+  String? dateOfRegistration,
+  String? accountNumber,
+  String? momoNumber,
+  double? totalBalance,
+}) {
+  return CustomerModel(
+    fullName: fullName ?? this.fullName,
+    location: location ?? this.location,
+    phoneNumber: phoneNumber ?? this.phoneNumber,
+    password: password ?? this.password,
+    profilePic: profilePic ?? this.profilePic,
+    uid: uid ?? this.uid,
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    status: status ?? this.status,
+    dailyRate: dailyRate ?? this.dailyRate,
+    idCard: idCard ?? this.idCard,
+    dob: dob ?? this.dob,
+    email: email ?? this.email,
+    gender: gender ?? this.gender,
+    nextOfKin: nextOfKin ?? this.nextOfKin,
+    dateOfRegistration: dateOfRegistration ?? this.dateOfRegistration,
+    account_number: accountNumber ?? account_number,
+    momo_number: momoNumber ?? momo_number,
+    totalBalance: totalBalance ?? this.totalBalance,
+  );
+}
+
 }

@@ -311,6 +311,7 @@ class _StaffTransactionsPageState extends State<StaffTransactionsPage> {
 
   Widget _buildTransactionCard(Transaction transaction, int index) {
     final isDeposit = transaction.type == 'deposit';
+    final isReversed = transaction.status == 'reversed';
     final color = isDeposit ? const Color(0xFF10B981) : const Color(0xFFEF4444);
     final icon = isDeposit ? Icons.add_circle_outline : Icons.remove_circle_outline;
     
@@ -381,6 +382,15 @@ class _StaffTransactionsPageState extends State<StaffTransactionsPage> {
                         '${transaction.type.toUpperCase()} - ${transaction.accountType}',
                         style: TextStyle(
                           color: color,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        '${transaction.status}',
+                        style: TextStyle(
+                          color: isReversed ? Colors.red : color,
                           fontSize: 10,
                           fontWeight: FontWeight.w500,
                         ),

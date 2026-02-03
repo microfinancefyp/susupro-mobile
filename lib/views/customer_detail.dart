@@ -19,7 +19,7 @@ import 'package:susu_micro/widgets/addCustomer_popUp.dart';
 
 class CustomerDetailsPage extends StatefulWidget {
   final CustomerModel? customer;
-  
+   
   const CustomerDetailsPage({super.key, this.customer});
 
   @override

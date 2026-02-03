@@ -859,7 +859,7 @@ Future<void> _fetchCustomers() async {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            "₵${customer.dailyRate}/day",
+                            "₵${customer.totalBalance}",
                             style: TextStyle(
                               color: Colors.green.shade700,
                               fontWeight: FontWeight.w700,
