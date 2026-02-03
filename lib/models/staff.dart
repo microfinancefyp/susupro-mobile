@@ -7,6 +7,7 @@ class Staff {
   final bool isOnline;
   final String? email;
   final String? phone;
+  final String? staffId;
 
   Staff({
     required this.id,
@@ -15,6 +16,7 @@ class Staff {
     this.isOnline = false,
     this.email,
     this.phone,
+    this.staffId,
   });
 
   factory Staff.fromFirestore(DocumentSnapshot doc) {
@@ -26,6 +28,7 @@ class Staff {
       isOnline: data['isOnline'] ?? false,
       email: data['email'],
       phone: data['phone'],
+      staffId: data['staff_id']
     );
   }
 }

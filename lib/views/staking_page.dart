@@ -134,6 +134,8 @@ class _StakingPageState extends State<StakingPage> with TickerProviderStateMixin
       
       // Add haptic feedback
       HapticFeedback.lightImpact();
+
+      logs.d("Staff id: ${staff.staffId}");
       
       final amount = double.tryParse(_amountController.text.trim()) ?? 0.0;
       final data = {
@@ -142,6 +144,7 @@ class _StakingPageState extends State<StakingPage> with TickerProviderStateMixin
         "transaction_type": "deposit",
         "staked_by": staff.id,
         "company_id": staff.companyId,
+        "staff_id": staff.id
       };
       logs.d(data);
       
