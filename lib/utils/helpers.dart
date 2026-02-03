@@ -90,18 +90,24 @@ Color getIconColor(String? status) {
   }
 
     String formatDate(String? dateString) {
-    if (dateString == null) return "N/A";
-    try {
-      final date = DateTime.parse(dateString);
-      final now = DateTime.now();
-      final difference = now.difference(date).inDays;
-      
-      if (difference == 0) return "Today";
-      if (difference == 1) return "Yesterday";
-      if (difference < 7) return "$difference days ago";
-      
-      return "${date.day}/${date.month}/${date.year}";
-    } catch (e) {
-      return "Invalid date";
-    }
+  if (dateString == null) return "N/A";
+
+  try {
+    final date = DateTime.parse(dateString);
+    final now = DateTime.now();
+
+    // Remove time part (set to midnight)
+    final today = DateTime(now.year, now.month, now.day);
+    final givenDate = DateTime(date.year, date.month, date.day);
+
+    final difference = today.difference(givenDate).inDays;
+
+    if (difference == 0) return "Today";
+    if (difference == 1) return "Yesterday";
+    if (difference < 7) return "$difference days ago";
+
+    return "${date.day}/${date.month}/${date.year}";
+  } catch (e) {
+    return "Invalid date";
   }
+}

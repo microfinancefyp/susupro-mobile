@@ -868,6 +868,7 @@ Future<void> _fetchCustomers() async {
                           ),
                         ],
                       ),
+                      SizedBox(width: 10,),
                        Container(
                             padding: const EdgeInsets.all(4),
                             decoration: BoxDecoration(
@@ -893,8 +894,9 @@ Future<void> _fetchCustomers() async {
                               ],
                             ),
                           ),
-                        ],
+                          ],
                       ),
+                      Text("Rate: ${customer.dailyRate}")
                     ],
                   ),
                 ),

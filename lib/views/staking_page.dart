@@ -215,23 +215,6 @@ class _StakingPageState extends State<StakingPage> with TickerProviderStateMixin
     );
   }
 
-  String _formatDate(String? dateString) {
-    if (dateString == null) return "Unknown date";
-    try {
-      final date = DateTime.parse(dateString);
-      final now = DateTime.now();
-      final difference = now.difference(date).inDays;
-      
-      if (difference == 0) return "Today";
-      if (difference == 1) return "Yesterday";
-      if (difference < 7) return "$difference days ago";
-      
-      return "${date.day}/${date.month}/${date.year}";
-    } catch (e) {
-      return "Invalid date";
-    }
-  }
-
   IconData _getTransactionIcon(String? type) {
     switch (type?.toLowerCase()) {
       case 'deposit':
@@ -805,7 +788,7 @@ class _StakingPageState extends State<StakingPage> with TickerProviderStateMixin
                                                     ),
                                                     8.0.vSpace,
                                                     Text(
-                                                      _formatDate(date),
+                                                      formatDate(date),
                                                       style: TextStyle(
                                                         color: Colors.grey[500],
                                                         fontSize: 12,

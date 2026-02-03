@@ -356,27 +356,31 @@ class _StaffTransactionsPageState extends State<StaffTransactionsPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
-                        children: [
-                          Text(
-                            '${transaction.customerName}',
-                            style: const TextStyle(
-                              color: Colors.black87,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 0.5,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                "${transaction.customerName}",
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  letterSpacing: 0.5,
+                                ),
+                              ),
                             ),
-                          ),
-                          const Spacer(),
-                          Text(
-                            '₵${transaction.amount.toStringAsFixed(2)}',
-                            style: TextStyle(
-                              color: color,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
+                            const SizedBox(width: 8),
+                            Text(
+                              '₵${transaction.amount.toStringAsFixed(2)}',
+                              style: TextStyle(
+                                color: color,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w700,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
+                          ],
+                        ),
                       const SizedBox(height: 4),
                       Text(
                         '${transaction.type.toUpperCase()} - ${transaction.accountType}',

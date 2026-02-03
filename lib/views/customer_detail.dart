@@ -271,6 +271,8 @@ class _CustomerDetailsPageState extends State<CustomerDetailsPage> with TickerPr
                                   children: [
                                     Text(
                                       widget.customer?.fullName ?? "Customer Name",
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
                                       style: const TextStyle(
                                         fontSize: 22,
                                         fontWeight: FontWeight.bold,
